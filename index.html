@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Horoscopes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="index.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+        <header>
+            <h1>Monthly Horoscopes</h1>
+        </header>
+    
+        <div>
+            <div id = 'zodiacs'>
+                <img src = "images/birth chart.jpeg" alt = "circle with all zodiac signs" usemap="#workmap">
+                <map name="workmap">
+                    <area shape="poly" coords="258,316,292, 237, 339,168, 531,346, 514, 380" alt="libra" href="#" onclick = "showPrediction()">
+                    <!-- <area shape="rect" coords="185, 77, 301, 158" alt="Phone" href="phone.htm"> -->
+                    <!--<area shape="poly" coords="337,300,44" alt="Cup of coffee" href="coffee.htm"> -->
+                </map>
+            </div>
+            <div id = 'signDetails'></div>
+        </div>
+  </body>
+</html>
