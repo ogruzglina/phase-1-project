@@ -1,4 +1,5 @@
-fetch("https://devbrewer-horoscope.p.rapidapi.com/month/short/Aries", {
+
+fetch("https://devbrewer-horoscope.p.rapidapi.com/month/short/taurus", { //`https://devbrewer-horoscope.p.rapidapi.com/month/short/${zodiac}`
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
@@ -10,8 +11,10 @@ fetch("https://devbrewer-horoscope.p.rapidapi.com/month/short/Aries", {
         console.log(data);
     });
 
-   function showPrediction () {
-       console.log("hi");
-   }
+
+function showPrediction (zodiacName) {
+    console.log("hi");
+    console.log(zodiacName);
+}
 
 
