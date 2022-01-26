@@ -14,9 +14,35 @@ const months = {
     '11': 'November',
     '12': 'December'
 }
+const zodiacSignsRange = {
+    'aries': '(March 21 - April 19)',
+    'taurus': '(April 20 - May 20)',
+    'gemini': '(May 21 - June 20)',
+    'cancer': '(June 21 - July 22)',
+    'leo': '(July 23 - August 22)',
+    'virgo': '(August 23 - September 22)',
+    'libra': '(September 23 - October 22)',
+    'scorpio': '(October 23 - November 21)',
+    'sagittarius': '(November 22 - December 21)',
+    'capricorn': '(December 22 - January 19)',
+    'aquarius': '(January 20 - February 18)',
+    'pisces': '(February 19 - March 20)',
+}
+
+document.addEventListener('DOMContentLoaded', getChosenZodiacSign);
+
+
+function getChosenZodiacSign (e) {
+    console.log(e);
+    const arrayOfClickableAreas = document.getElementsByTagName('area');
+
+    for (let area of arrayOfClickableAreas) {
+        area.addEventListener('click', showPrediction);
+    }
+}
 
 function getFetchResponse (url, zodiacSignName) {
-    return fetch(`${url}/${zodiacSignName}`, { //`https://devbrewer-horoscope.p.rapidapi.com/month/short/${zodiac}`
+    return fetch(`${url}/${zodiacSignName}`, { 
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
@@ -26,29 +52,22 @@ function getFetchResponse (url, zodiacSignName) {
         .then(resp => resp.json())
 }
 
-function showPrediction (zodiacName) {
+function showPrediction (e) {
+    zodiacName = e.target.alt;
+
     const zodiac = document.getElementById('zodiacName');
     zodiac.textContent = zodiacName.toUpperCase();
 
+    const zodiacRange = document.getElementById('zodiacRange');
+    zodiacRange.textContent = zodiacSignsRange[zodiacName];
+
     getFetchResponse (url, zodiacName) 
     .then(data => {
-        console.log(data);
         const month = document.getElementById('month');
-        month.textContent = convertMonth(data.Month);
+        month.textContent = months[data.Month];
 
         createPredictionDetails(data, zodiacName);
     });
-}
-
-function convertMonth (number) {
-
-    console.log(months[number])
-    
-    for (let month in months) {
-        if (number === month) {
-            return months[month];
-        }
-    }
 }
 
 function createPredictionDetails (predictionDetails, zodiacName) {
