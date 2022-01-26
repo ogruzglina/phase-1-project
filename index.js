@@ -29,16 +29,18 @@ const zodiacSignsRange = {
     'pisces': '(February 19 - March 20)',
 }
 
-document.addEventListener('DOMContentLoaded', getChosenZodiacSign);
+document.addEventListener('DOMContentLoaded', () => {
+getChosenZodiacSign ();
+openSubscriptionForm ();
+closeSubscriptionForm();
+});
 
 
-function getChosenZodiacSign (e) {
-    console.log(e);
-    const arrayOfClickableAreas = document.getElementsByTagName('area');
+function getChosenZodiacSign () {
+    const arrayOfClickableAreas = [...document.getElementsByTagName('area')];
 
-    for (let area of arrayOfClickableAreas) {
-        area.addEventListener('click', showPrediction);
-    }
+    arrayOfClickableAreas.forEach(area => 
+        area.addEventListener('click', showPrediction));
 }
 
 function getFetchResponse (url, zodiacSignName) {
@@ -63,8 +65,9 @@ function showPrediction (e) {
 
     getFetchResponse (url, zodiacName) 
     .then(data => {
+        console.log(data)
         const month = document.getElementById('month');
-        month.textContent = months[data.Month];
+        month.textContent = `Your prediction for ${months[data.Month]}`;
 
         createPredictionDetails(data, zodiacName);
     });
@@ -82,4 +85,22 @@ function createPredictionDetails (predictionDetails, zodiacName) {
 
     const pWorst = document.getElementById('worstDays');
     pWorst.textContent = details['Worst Days'];
+}
+
+function openSubscriptionForm () {
+    const form = document.getElementById("myForm");
+    const openSubscriptionFormBtn = document.getElementById("openSubscriptionFormBtn");
+
+    openSubscriptionFormBtn.addEventListener('click', () => form.style.display = "block");
+}
+      
+function closeSubscriptionForm () {
+    const form = document.getElementById("myForm");
+    const closeSubscriptionFormBtn = document.querySelector(".btn.cancel");
+
+    closeSubscriptionFormBtn.addEventListener('click', () => form.style.display = "none");
+}
+
+function subscribe () {
+
 }

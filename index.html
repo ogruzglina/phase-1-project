@@ -10,8 +10,21 @@
   <body>
         <header>
             <h1>Monthly Horoscopes</h1>
-            <h3>Choose you sign</h3>
+            <h3>Choose your sign</h3>
         </header>
+
+        <button id="openSubscriptionFormBtn" >Click to subscribe</button>
+
+        <div class="form-popup" id="myForm">
+          <form action = "" class = "form-container">
+            <input type = "text" placeholder="Name" name="name" required>
+            <input type = "email" placeholder="Email" name="email" required>
+            <input type = "date" placeholder="MM" name="month" required>
+
+            <button type = "submit" class="btn">Subscribe</button>
+            <button type = "button" class="btn cancel">Cancel</button>
+          </form>
+        </div>
     
         <div id = 'main'>
             <div id = 'zodiacs'>
@@ -44,11 +57,11 @@
               
               <div id="predictionInfo">
                 <p id = 'prediction'></p>
-                <p>Best dates: <span id = 'bestDays'></span> </p>
-                <p>Worst dates: <span id = 'worstDays'></span> </p>
+                <p>Best dates of this month: <span id = 'bestDays'></span> </p>
+                <p>Worst dates of this month: <span id = 'worstDays'></span> </p>
               </div>
-              
             </div>
         </div>
+
   </body>
 </html>

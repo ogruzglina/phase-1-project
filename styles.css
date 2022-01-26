@@ -23,20 +23,27 @@ header {
 }
 #signDetails {
     border: 2px solid #88d6f0;
-    width: 600px;
-    height: auto;
+    width: 650px;
+    height: 796px;
     background: linear-gradient(#F2F2F2, #80B4BF, #65858C, #0a4349) fixed;
+    overflow-y: scroll;
 }
+
 #title {
-    background-color: #333333;
+    background-color: #333;
     padding: 5px;
     text-align: center;
+    width: 640px;
+    position: sticky;
+    top: 0;
 }
+
 #zodiacName {
     color: white;
     font-size: 24px;
     letter-spacing: 2px;
 }
+
 #zodiacRange {
     color: #3e8fde;
     font-size: 14px;
@@ -46,14 +53,99 @@ header {
 #month {
     font-size: 18px;
 }
+#prediction {
+    margin: 0;
+}
 #bestDays, #worstDays {
     font-weight: bold;
 } 
 
 #predictionInfo {
     font-size: 18px;
-    padding: 5px;
+    padding: 45px;
     background: -webkit-linear-gradient(#000, rgb(1, 12, 80));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+/* styles for the subscribe here btn */
+#openSubscriptionFormBtn {
+    /* background-color: rgb(105, 64, 3); */
+    background-color: rgb(131, 105, 65);
+    /* background-color: rgb(98, 141, 233); */
+    /* background-color: rgb(71, 109, 98); */
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    position: fixed;
+    top: 95px;
+    right: 28px;
+    width: 250px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Montserrat', monospace;
+    margin-bottom: 10px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 28px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 250px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type = text], .form-container input[type = date], .form-container input[type = email] {
+    width: 93%;
+    padding: 10px;
+    margin-bottom:10px;
+    border: none;
+    background: #f1f1f1;
+    font-family: 'Montserrat', monospace;
+    font-size: 16px;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus,  .form-container input[type = email]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the subscribe/cancel button */
+  .form-container .btn {
+    background-color: #41a09b;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    font-family: 'Montserrat', monospace;
+    font-size: 16px;
+  }
+  
+  /* Add a black background color to the cancel button and remove margin-bottom */
+  .form-container .cancel {
+    background-color: #333;
+    margin-bottom: 0px;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
