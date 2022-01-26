@@ -111,6 +111,10 @@ function subscribe () {
 
         saveUserInfoToJsonFile (userInfo);
         alert(`${userInfo.name}, thank you for subscription!`);
+        
+        const form = document.getElementById("myForm");
+        form.style.display = "none";
+
     });
 }
 
@@ -119,14 +123,18 @@ function getInputDataFromForm(e) {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const dateOfBirth = e.target.date.value;
-    const userInfo = {name, email, dateOfBirth};
+    const userInfo = { 
+        name, 
+        email, 
+        dateOfBirth
+    };
 
     e.target.reset();
     return userInfo;
 }
 
 function saveUserInfoToJsonFile (userInfo) {
-    fetch('http://localhost:3000/subscribedUsers', {
+    return fetch('http://localhost:3000/subscribedUsers', {
         method: 'POST',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(userInfo)

@@ -1,34 +1,3 @@
 {
-  "subscribedUsers": [
-    {
-      "name": "Olha",
-      "email": "er@sd.c",
-      "dateOfBirth": "2014-04-16",
-      "id": 1
-    },
-    {
-      "name": "poke",
-      "email": "er@sd.c",
-      "dateOfBirth": "2022-01-20",
-      "id": 2
-    },
-    {
-      "name": "Alex",
-      "email": "wok.eng.usa@gmail.com",
-      "dateOfBirth": "1990-01-06",
-      "id": 3
-    },
-    {
-      "name": "tt",
-      "email": "t@f.cd",
-      "dateOfBirth": "2021-12-31",
-      "id": 4
-    },
-    {
-      "name": "Alex",
-      "email": "er@sd.c",
-      "dateOfBirth": "2022-01-14",
-      "id": 5
-    }
-  ]
+  "subscribedUsers": []
 }
