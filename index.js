@@ -30,10 +30,10 @@ const zodiacSignsRange = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-getChosenZodiacSign ();
-openSubscriptionForm ();
-closeSubscriptionForm ();
-subscribe ();
+    getChosenZodiacSign ();
+    openSubscriptionForm ();
+    closeSubscriptionForm ();
+    subscribe ();
 });
 
 
@@ -106,10 +106,12 @@ function subscribe () {
     const form = document.getElementById("myForm");
 
     form.addEventListener('submit', (e) => {
-        getInputDataFromForm (e);
-        //saveUserInfoToJsonFile (getInputDataFromForm (e));
-});
+        e.preventDefault();
+        const userInfo = getInputDataFromForm (e);
 
+        saveUserInfoToJsonFile (userInfo);
+        alert(`${userInfo.name}, thank you for subscription!`);
+    });
 }
 
 function getInputDataFromForm(e) {
@@ -123,8 +125,12 @@ function getInputDataFromForm(e) {
     return userInfo;
 }
 
-// function saveUserInfoToJsonFile (userInfo) {
-//     fetch()
-//         .then()
-//         .then();
-// }
+function saveUserInfoToJsonFile (userInfo) {
+    fetch('http://localhost:3000/subscribedUsers', {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify(userInfo)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+}
