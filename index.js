@@ -32,7 +32,8 @@ const zodiacSignsRange = {
 document.addEventListener('DOMContentLoaded', () => {
 getChosenZodiacSign ();
 openSubscriptionForm ();
-closeSubscriptionForm();
+closeSubscriptionForm ();
+subscribe ();
 });
 
 
@@ -102,5 +103,28 @@ function closeSubscriptionForm () {
 }
 
 function subscribe () {
+    const form = document.getElementById("myForm");
+
+    form.addEventListener('submit', (e) => {
+        getInputDataFromForm (e);
+        //saveUserInfoToJsonFile (getInputDataFromForm (e));
+});
 
 }
+
+function getInputDataFromForm(e) {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const dateOfBirth = e.target.date.value;
+    const userInfo = {name, email, dateOfBirth};
+
+    e.target.reset();
+    return userInfo;
+}
+
+// function saveUserInfoToJsonFile (userInfo) {
+//     fetch()
+//         .then()
+//         .then();
+// }
