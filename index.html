@@ -10,9 +10,10 @@
   <body>
         <header>
             <h1>Monthly Horoscopes</h1>
+            <h3>Choose you sign</h3>
         </header>
     
-        <div>
+        <div id = 'main'>
             <div id = 'zodiacs'>
                 <img src = "images/birth chart.jpeg" alt = "circle with all zodiac signs" usemap="#workmap">
                 <map name="workmap">
@@ -20,21 +21,34 @@
                     <area shape="poly" coords="345, 151, 407, 101, 498, 63, 573, 324, 545, 349" alt="taurus" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="507, 62, 585, 50, 685, 66, 612, 335, 582, 334" alt="aries" href="#" onclick = "showPrediction(alt)">
 
-                    <area shape="poly" coords="697, 71, 759, 96, 836, 156, 640, 351, 616, 338" alt="pices" href="#" onclick = "showPrediction(alt)">
+                    <area shape="poly" coords="697, 71, 759, 96, 836, 156, 640, 351, 616, 338" alt="pisces" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="846, 145, 899, 204, 938, 293, 660, 372, 646, 347" alt="aquarius" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="667, 382, 936, 311, 955, 398, 945, 481, 667, 414" alt="capricorn" href="#" onclick = "showPrediction(alt)">
 
-                    <area shape="poly" coords="661, 422, 943, 499, 909, 589, 861, 653, 646, 443" alt="sagitarius" href="#" onclick = "showPrediction(alt)">
+                    <area shape="poly" coords="661, 422, 943, 499, 909, 589, 861, 653, 646, 443" alt="sagittarius" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="624, 464, 647, 447, 845, 648, 771, 709, 709, 738" alt="scorpio" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="570, 470, 609, 470, 696, 749, 585, 760, 491, 750" alt="libra" href="#" onclick = "showPrediction(alt)">
 
                     <area shape="poly" coords="348, 658, 545, 468, 569, 469, 491, 739, 405, 698" alt="virgo" href="#" onclick = "showPrediction(alt)">
                     <area shape="poly" coords="259, 504, 525, 421, 535, 448, 347, 647, 290, 575" alt="leo" href="#" onclick = "showPrediction(alt)">
-                    <area shape="poly" coords="255, 492, 242, 407, 250, 316, 524, 382, 524, 413" alt="canser" href="#" onclick = "showPrediction(alt)">
-                    
+                    <area shape="poly" coords="255, 492, 242, 407, 250, 316, 524, 382, 524, 413" alt="cancer" href="#" onclick = "showPrediction(alt)">
                 </map>
             </div>
-            <div id = 'signDetails'></div>
+
+            <div id = 'signDetails'>
+              <div id="title">
+                <div id="zodiacName">[Zodiac sign's name]</div>
+                <div id="runtime">[data range for this sign]</div>
+                <div id="month">[month of prediction]</div>
+              </div>
+              
+              <div id="predictionInfo">
+                <p id = 'prediction'></p>
+                <p>Best dates: <span id = 'bestDays'></span> </p>
+                <p>Worst dates: <span id = 'worstDays'></span> </p>
+              </div>
+              
+            </div>
         </div>
   </body>
 </html>
