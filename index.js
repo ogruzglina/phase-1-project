@@ -47,7 +47,7 @@ function getChosenZodiacSign () {
 
 function showPrediction (e) {
     let zodiacName;
-    
+
     if (!isDefault) { 
         zodiacName = e.target.alt;
     } else {
@@ -62,12 +62,11 @@ function showPrediction (e) {
     zodiacRange.textContent = zodiacSignsRange[zodiacName];
 
     getFetchResponse (url, zodiacName) 
-        .then(data => {
-            console.log(data)
+        .then(predictionData => {
             const month = document.getElementById('month');
-            month.textContent = `Your prediction for ${months[data.Month]}`;
+            month.textContent = `Your prediction for ${months[predictionData.Month]}`;
 
-            createPredictionDetails(data, zodiacName);
+            createPredictionDetails(predictionData, zodiacName);
         });
 }
 
@@ -125,7 +124,7 @@ function subscribe () {
     });
 }
 
-function getInputDataFromForm(e) {
+function getInputDataFromForm (e) {
     e.preventDefault();
 
     const name = e.target.name.value;
@@ -150,17 +149,3 @@ function saveUserInfoToJsonFile (userInfo) {
         .then(response => response.json())
         .then(data => console.log(data));
 }
-
-
-// let today = new Date();
-// console.log(today);
-// let month = today.getMonth() + 1;
-// console.log(month);
-// let day = today.getDate();
-// console.log(day);
-
-
-// let dd = String(today.getDate()).padStart(2, '0');
-// console.log(dd);
-// let mm = String(today.getMonth() + 1).padStart(2, '0');
-// console.log(mm);
