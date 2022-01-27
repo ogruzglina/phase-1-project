@@ -19,7 +19,7 @@
           <form action = "" class = "form-container">
             <input type = "text" placeholder="Name" name="name" required>
             <input type = "email" placeholder="Email" name="email" required>
-            <input type = "date" placeholder="Date of Birth" name="date" required>
+            <input type = "date" placeholder="Date of Birth" name="date" max='12/31/2022' required>
 
             <button type = "submit" class="btn">Subscribe</button>
             <button type = "button" class="btn cancel">Cancel</button>
@@ -50,15 +50,15 @@
 
             <div id = 'signDetails'>
               <div id="title">
-                <div id="zodiacName">[Zodiac sign's name]</div>
-                <div id="zodiacRange">[data range for this sign]</div>
-                <div id="month">[month of prediction]</div>
+                <div id="zodiacName"></div>
+                <div id="zodiacRange"></div>
+                <div id="month"></div>
               </div>
               
               <div id="predictionInfo">
                 <p id = 'prediction'></p>
-                <p>Best dates of this month: <span id = 'bestDays'></span> </p>
-                <p>Worst dates of this month: <span id = 'worstDays'></span> </p>
+                <p id = 'bestDays'></p>
+                <p id = 'worstDays'> </p>
               </div>
             </div>
         </div>

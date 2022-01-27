@@ -28,20 +28,47 @@ const zodiacSignsRange = {
     'aquarius': '(January 20 - February 18)',
     'pisces': '(February 19 - March 20)',
 }
+let isDefault = true;
 
 document.addEventListener('DOMContentLoaded', () => {
+    showPrediction (); // show prediction for default sign (areis)
     getChosenZodiacSign ();
     openSubscriptionForm ();
     closeSubscriptionForm ();
     subscribe ();
 });
 
-
 function getChosenZodiacSign () {
     const arrayOfClickableAreas = [...document.getElementsByTagName('area')];
 
     arrayOfClickableAreas.forEach(area => 
         area.addEventListener('click', showPrediction));
+}
+
+function showPrediction (e) {
+    let zodiacName;
+    
+    if (!isDefault) { 
+        zodiacName = e.target.alt;
+    } else {
+        zodiacName = 'aries';
+        isDefault = false;
+    }
+
+    const zodiac = document.getElementById('zodiacName');
+    zodiac.textContent = zodiacName.toUpperCase();
+
+    const zodiacRange = document.getElementById('zodiacRange');
+    zodiacRange.textContent = zodiacSignsRange[zodiacName];
+
+    getFetchResponse (url, zodiacName) 
+        .then(data => {
+            console.log(data)
+            const month = document.getElementById('month');
+            month.textContent = `Your prediction for ${months[data.Month]}`;
+
+            createPredictionDetails(data, zodiacName);
+        });
 }
 
 function getFetchResponse (url, zodiacSignName) {
@@ -55,25 +82,6 @@ function getFetchResponse (url, zodiacSignName) {
         .then(resp => resp.json())
 }
 
-function showPrediction (e) {
-    zodiacName = e.target.alt;
-
-    const zodiac = document.getElementById('zodiacName');
-    zodiac.textContent = zodiacName.toUpperCase();
-
-    const zodiacRange = document.getElementById('zodiacRange');
-    zodiacRange.textContent = zodiacSignsRange[zodiacName];
-
-    getFetchResponse (url, zodiacName) 
-    .then(data => {
-        console.log(data)
-        const month = document.getElementById('month');
-        month.textContent = `Your prediction for ${months[data.Month]}`;
-
-        createPredictionDetails(data, zodiacName);
-    });
-}
-
 function createPredictionDetails (predictionDetails, zodiacName) {
     const zodiacNameWithCapital = zodiacName[0].toUpperCase() + zodiacName.slice(1);
     const details = predictionDetails[zodiacNameWithCapital];
@@ -82,10 +90,10 @@ function createPredictionDetails (predictionDetails, zodiacName) {
     pPrediction.textContent = details['This Month'];
 
     const pBest = document.getElementById('bestDays');
-    pBest.textContent = details['Best Days'];
+    pBest.textContent = `Best dates of this month: ${details['Best Days']}`;
 
     const pWorst = document.getElementById('worstDays');
-    pWorst.textContent = details['Worst Days'];
+    pWorst.textContent = `Worst dates of this month: ${details['Worst Days']}`;
 }
 
 function openSubscriptionForm () {
@@ -111,15 +119,15 @@ function subscribe () {
 
         saveUserInfoToJsonFile (userInfo);
         alert(`${userInfo.name}, thank you for subscription!`);
-        
+
         const form = document.getElementById("myForm");
         form.style.display = "none";
-
     });
 }
 
 function getInputDataFromForm(e) {
     e.preventDefault();
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const dateOfBirth = e.target.date.value;
@@ -135,10 +143,24 @@ function getInputDataFromForm(e) {
 
 function saveUserInfoToJsonFile (userInfo) {
     return fetch('http://localhost:3000/subscribedUsers', {
-        method: 'POST',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify(userInfo)
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(userInfo)
         })
         .then(response => response.json())
         .then(data => console.log(data));
 }
+
+
+// let today = new Date();
+// console.log(today);
+// let month = today.getMonth() + 1;
+// console.log(month);
+// let day = today.getDate();
+// console.log(day);
+
+
+// let dd = String(today.getDate()).padStart(2, '0');
+// console.log(dd);
+// let mm = String(today.getMonth() + 1).padStart(2, '0');
+// console.log(mm);
