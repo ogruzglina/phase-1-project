@@ -12,21 +12,23 @@
             <h1>Monthly Horoscopes</h1>
             <h3>Choose your sign</h3>
         </header>
+        <div id = 'bodyExceptHeader'>
+          <div id = 'openFormBtn'>
+            <button id="openSubscriptionFormBtn" >Click to subscribe</button>
+          </div>
 
-        <button id="openSubscriptionFormBtn" >Click to subscribe</button>
+          <div class="form-popup" id="myForm">
+            <form action = "" class = "form-container">
+              <input type = "text" placeholder="Name" name="name" required>
+              <input type = "email" placeholder="Email" name="email" required>
+              <input type = "date" placeholder="Date of Birth" name="date" max='12/31/2022' required>
 
-        <div class="form-popup" id="myForm">
-          <form action = "" class = "form-container">
-            <input type = "text" placeholder="Name" name="name" required>
-            <input type = "email" placeholder="Email" name="email" required>
-            <input type = "date" placeholder="Date of Birth" name="date" max='12/31/2022' required>
-
-            <button type = "submit" class="btn">Subscribe</button>
-            <button type = "button" class="btn cancel">Cancel</button>
-          </form>
-        </div>
+              <button type = "submit" class="btn">Subscribe</button>
+              <button type = "button" class="btn cancel">Cancel</button>
+            </form>
+          </div>
     
-        <div id = 'main'>
+          <div id = 'main'>
             <div id = 'zodiacs'>
                 <img src = "images/birth chart.jpeg" alt = "circle with all zodiac signs" usemap="#workmap">
                 <map id = 'clickableAreas' name="workmap">
@@ -61,6 +63,7 @@
                 <p id = 'worstDays'> </p>
               </div>
             </div>
+          </div>
         </div>
 
   </body>
