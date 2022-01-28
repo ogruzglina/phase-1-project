@@ -28,6 +28,70 @@ const zodiacSignsRange = {
     'aquarius': '(January 20 - February 18)',
     'pisces': '(February 19 - March 20)',
 }
+
+const signsRange = [
+    {
+        signName: 'aries',
+        start: [2, 21], 
+        end: [3, 19],
+    },
+    {
+        signName: 'taurus',
+        start: [3, 20], 
+        end: [4, 20],
+    },
+    {
+        signName: 'gemini',
+        start: [4, 21], 
+        end: [5, 20],
+    },
+    {
+        signName: 'cancer',
+        start: [5, 21], 
+        end: [6, 22],
+    },
+    {
+        signName: 'leo',
+        start: [6, 23], 
+        end: [7, 22],
+    },
+    {
+        signName: 'virgo',
+        start: [7, 23], 
+        end: [8, 22],
+    },
+    {
+        signName: 'libra',
+        start: [8, 23], 
+        end: [9, 22],
+    },
+    {
+        signName: 'scorpio',
+        start: [9, 23], 
+        end: [10, 21],
+    },
+    {
+        signName: 'sagittarius',
+        start: [10, 22], 
+        end: [11, 21],
+    },
+    {
+        signName: 'capricorn',
+        start: [11, 22], 
+        end: [0, 19],
+        yearOfSet: isDecember(),
+    },
+    {
+        signName: 'aquarius',
+        start: [0, 20], 
+        end: [1, 18],
+    },
+    {
+        signName: 'pisces',
+        start: [1, 19], 
+        end: [2, 20],
+    },
+]
 let isDefault = true;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,6 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSubscriptionForm ();
     subscribe ();
 });
+
+function isDecember () {
+    let todayMonth = new Date().getMonth();
+
+    return 11 === todayMonth ?  false : true
+}
 
 function getChosenZodiacSign () {
     const arrayOfClickableAreas = [...document.getElementsByTagName('area')];
@@ -51,7 +121,7 @@ function showPrediction (e) {
     if (!isDefault) { 
         zodiacName = e.target.alt;
     } else {
-        zodiacName = 'aries';
+        zodiacName = actualZodiacSign();
         isDefault = false;
     }
 
@@ -68,6 +138,35 @@ function showPrediction (e) {
 
             createPredictionDetails(predictionData, zodiacName);
         });
+}
+
+function actualZodiacSign () {
+    let today = new Date();
+    let yearStartDate;
+    let yearEndDate;
+
+    for(let signRange of signsRange) {
+
+        if (signRange.yearOfSet) {
+            yearStartDate = today.getFullYear() - 1 
+            yearEndDate = today.getFullYear();
+        } else {
+            if (signRange.signName === 'capricorn') {
+                yearStartDate = today.getFullYear();
+                yearEndDate = today.getFullYear() + 1;
+            } else {
+                yearStartDate = today.getFullYear();
+                yearEndDate = today.getFullYear();
+            }
+        }
+
+        const signStartDate = new Date(yearStartDate, signRange.start[0], signRange.start[1]);
+        const signEndDate = new Date(yearEndDate, signRange.end[0], signRange.end[1]);
+
+        if (signStartDate <= today && today <= signEndDate) {
+            return signRange.signName; 
+        }
+    }
 }
 
 function getFetchResponse (url, zodiacSignName) {
