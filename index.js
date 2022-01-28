@@ -117,7 +117,7 @@ function subscribe () {
         const userInfo = getInputDataFromForm (e);
 
         saveUserInfoToJsonFile (userInfo);
-        alert(`${userInfo.name}, thank you for subscription!`);
+        alert(`${userInfo.name}, thank you for subscribing!`);
 
         const form = document.getElementById("myForm");
         form.style.display = "none";
