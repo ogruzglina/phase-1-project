@@ -1,5 +1,5 @@
 
-const url = "https://devbrewer-horoscope.p.rapidapi.com/month/short";   //"https://devbrewer-horoscope.p.rapidapi.com/month/short/taurus"
+const url = "https://devbrewer-horoscope.p.rapidapi.com/month/short";   
 const months = {
     '01': 'January',
     '02': 'February',

@@ -1,4 +1,10 @@
 {
   "subscribedUsers": [
+    {
+      "name": "olga",
+      "email": "er@sd.c",
+      "dateOfBirth": "2022-01-05",
+      "id": 1
+    }
   ]
 }

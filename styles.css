@@ -1,14 +1,9 @@
-
-
-
-
 /* styles for whole page */
 body {
-    /* background: linear-gradient(#F2F2F2, #80B4BF, #65858C, #193C40) fixed; */
     font-family: 'Montserrat', monospace;
     color: #88d6f0;
-    background-image: url(http://cdn.wallpaperhi.com/1920x1080/20120209/outer%20space%20dust%201920x1080%20wallpaper_www.wallpaperhi.com_52.jpg);
-}
+    background-image: url(images/background.jpg);
+  }
 
 /* styles for header */
 header {
@@ -31,8 +26,10 @@ header {
 
 /* styles for the image with zodiac signs */
 #zodiacs img {
-    height: 800px;
-    width: 1200px;
+  /* height: 66.7%;
+  width: 66.7%; */
+  height: 800px; 
+  width: 1200px; 
 }
 
 /* styles for the container with prediction and some details about the sign */
